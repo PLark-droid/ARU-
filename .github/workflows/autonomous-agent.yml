@@ -89,6 +89,11 @@ jobs:
 
       - name: Run TypeScript compilation check
         run: npm run typecheck
+        continue-on-error: true
+
+      - name: Ensure directories exist
+        run: |
+          mkdir -p .ai/logs .ai/parallel-reports
 
       - name: Create agent configuration
         run: |

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://miyabi.dev/schema/config.json",
+  "name": "ARU内部監査運用を構築する",
+  "version": "0.1.0",
+  "repository": {
+    "owner": "PLark-droid",
+    "name": "ARU-"
+  },
+  "agents": {
+    "enabled": true,
+    "parallel": {
+      "maxConcurrency": 3,
+      "timeout": 300000
+    },
+    "pipeline": ["issue", "codegen", "review"],
+    "autoExecute": {
+      "enabled": true,
+      "triggerLabel": "🤖agent-execute"
+    }
+  },
+  "labels": {
+    "states": {
+      "pending": "📥 state:pending",
+      "analyzing": "🔍 state:analyzing",
+      "implementing": "🏗️ state:implementing",
+      "reviewing": "👀 state:reviewing",
+      "completed": "✅ state:completed",
+      "blocked": "🚫 state:blocked",
+      "paused": "⏸️ state:paused"
+    },
+    "phases": {
+      "planning": "🎯 phase:planning",
+      "development": "💻 phase:development",
+      "testing": "🧪 phase:testing",
+      "deployment": "🚀 phase:deployment"
+    },
+    "priorities": {
+      "high": "🔴priority-high",
+      "medium": "🟡priority-medium",
+      "low": "🟢priority-low"
+    },
+    "agent": {
+      "execute": "🤖agent-execute",
+      "running": "🔄 agent-running",
+      "completed": "✅ agent-completed",
+      "failed": "❌agent-failed",
+      "escalated": "🚨escalated"
+    }
+  },
+  "quality": {
+    "minScore": 80,
+    "checks": {
+      "typescript": true,
+      "eslint": true,
+      "tests": true,
+      "security": true
+    }
+  },
+  "notifications": {
+    "slack": {
+      "enabled": false
+    },
+    "github": {
+      "enabled": true,
+      "commentOnComplete": true,
+      "commentOnFailure": true
+    }
+  }
+}

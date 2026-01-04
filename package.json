@@ -8,7 +8,11 @@
     "build": "tsc",
     "test": "vitest",
     "lint": "eslint . --ext .ts,.tsx",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "agents:parallel:exec": "tsx src/agents/parallel-executor.ts",
+    "agents:coordinator": "tsx src/agents/coordinator.ts",
+    "agents:codegen": "tsx src/agents/codegen.ts",
+    "agents:review": "tsx src/agents/review.ts"
   },
   "keywords": [
     "agentic-os",
