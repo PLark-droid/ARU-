@@ -76,7 +76,7 @@ export class ${toPascalCase(safeName)} {
   async execute(): Promise<void> {
     this.log('info', 'Executing main logic...');
     // TODO: メインロジックを実装
-${requirements.map((r, i) => `    // TODO: ${r}`).join('\n')}
+${requirements.map((r) => `    // TODO: ${r}`).join('\n')}
   }
 
   /**

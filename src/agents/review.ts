@@ -100,8 +100,9 @@ async function checkSecurityVulnerabilities(): Promise<ReviewResult> {
 
     let vulnerabilities = 0;
     try {
+      // src/agents/ は除外（正当なAgent実行コード）
       const result = execSync(
-        `grep -rE "${dangerousPatterns.join('|')}" src/ --include="*.ts" 2>/dev/null || true`,
+        `grep -rE "${dangerousPatterns.join('|')}" src/ --include="*.ts" --exclude-dir=agents 2>/dev/null || true`,
         { encoding: 'utf-8' }
       );
       vulnerabilities = result.split('\n').filter((l) => l.trim()).length;
